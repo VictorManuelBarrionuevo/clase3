@@ -4,3 +4,6 @@
  * @file
  * Primary module hooks for Test Module module.
  */
+
+
+print_r('hola');
