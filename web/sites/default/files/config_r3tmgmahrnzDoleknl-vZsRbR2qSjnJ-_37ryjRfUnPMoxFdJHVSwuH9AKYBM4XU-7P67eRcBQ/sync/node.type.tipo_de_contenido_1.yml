@@ -1,0 +1,18 @@
+uuid: e7a5084d-a6ec-41ba-98de-3be0494ff7fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Tipo de contenido 1'
+type: tipo_de_contenido_1
+description: 'Descripcion de mi content type'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

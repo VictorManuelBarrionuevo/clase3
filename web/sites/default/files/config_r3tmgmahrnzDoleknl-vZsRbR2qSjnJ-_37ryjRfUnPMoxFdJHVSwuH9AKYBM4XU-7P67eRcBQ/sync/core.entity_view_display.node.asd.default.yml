@@ -1,0 +1,28 @@
+uuid: 47bad866-0f8b-4c49-9926-54e602423efc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.asd.body
+    - node.type.asd
+  module:
+    - text
+    - user
+id: node.asd.default
+targetEntityType: node
+bundle: asd
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

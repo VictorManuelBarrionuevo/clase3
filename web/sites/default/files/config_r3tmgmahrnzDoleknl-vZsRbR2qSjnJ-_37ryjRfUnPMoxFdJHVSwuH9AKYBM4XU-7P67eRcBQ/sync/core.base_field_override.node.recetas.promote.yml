@@ -1,0 +1,22 @@
+uuid: 04a22240-2c68-4d3d-b6fb-215460ffef3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.recetas
+id: node.recetas.promote
+field_name: promote
+entity_type: node
+bundle: recetas
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

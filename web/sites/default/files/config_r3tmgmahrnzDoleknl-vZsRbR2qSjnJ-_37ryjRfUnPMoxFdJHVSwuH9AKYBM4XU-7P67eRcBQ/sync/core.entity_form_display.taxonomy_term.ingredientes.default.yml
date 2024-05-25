@@ -1,0 +1,36 @@
+uuid: 65885887-6c89-48ec-8581-39d506e7534d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ingredientes
+  module:
+    - path
+id: taxonomy_term.ingredientes.default
+targetEntityType: taxonomy_term
+bundle: ingredientes
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
