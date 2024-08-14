@@ -1,8 +1,0 @@
-uuid: e1f72d74-4d97-4db3-bde1-18ca3292d758
-langcode: en
-status: true
-dependencies: {  }
-name: Ingredientes
-vid: ingredientes
-description: 'Descripcion del vocabulario ingredientes'
-weight: 0
