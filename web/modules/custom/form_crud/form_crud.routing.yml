@@ -1,0 +1,7 @@
+form_crud.crud:
+  path: '/form-crud/{type?}/{id?}'
+  defaults:
+    _title: 'Crud'
+    _controller: '\Drupal\form_crud\Controller\FormCrudController'
+  requirements:
+    _permission: 'access content'

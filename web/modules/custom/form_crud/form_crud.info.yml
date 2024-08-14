@@ -1,0 +1,5 @@
+name: 'Form Crud'
+type: module
+description: 'Modulo para crear CRUDs'
+package: Custom
+core_version_requirement: ^10 || ^11

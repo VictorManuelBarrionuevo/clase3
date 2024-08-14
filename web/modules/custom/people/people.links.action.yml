@@ -1,0 +1,5 @@
+people_entity.add_form:
+  title: 'Add people data'
+  route_name: entity.people_entity.add_form
+  appears_on:
+    - entity.people_entity.collection

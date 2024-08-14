@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for People module.
+ */
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function people_theme(): array
+{
+    $themes['tabla_listado'] = [
+        'variables' => [
+            'people_header' => '',
+            'people_rows' => '',
+            'form_data' => '',
+            'type' => '',
+            'id' => ''
+        ],
+    ];
+
+    $themes['people_entity'] = [
+        'render element' => 'element'
+    ];
+
+    $themes['xform_crud'] = [
+        'variables' => ['form_data' => '', 'type' => '', 'id' => ''],
+    ];
+
+    return $themes;
+
+    /*return [
+      'people_entity' => ['render element' => 'elements'],
+    ];*/
+}
+
+/**
+ * Prepares variables for people data templates.
+ *
+ * Default template: people-entity.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the people data information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_people_entity(array &$variables): void
+{
+    $variables['view_mode'] = $variables['elements']['#view_mode'];
+    foreach (Element::children($variables['elements']) as $key) {
+        $variables['content'][$key] = $variables['elements'][$key];
+    }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function people_page_attachments(array &$attachments)
+{
+    $attachments['#attached']['library'][] = 'people/people_js_css';
+}

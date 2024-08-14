@@ -1,0 +1,59 @@
+entity.people_entity.settings:
+  path: 'admin/structure/people-entity'
+  defaults:
+    _form: '\Drupal\people\Form\PeopleDataSettingsForm'
+    _title: 'People data'
+  requirements:
+    _permission: 'administer people_entity'
+
+peolpe.form:
+  path: 'people-form'
+  defaults:
+    _title: 'Peolpe Form'
+    _controller: '\Drupal\people\Controller\PeopleController'
+  requirements:
+    _permission: 'access content'
+
+people.form_test:
+  path: 'form-test'
+  defaults:
+    _title: 'Form Test'
+    _controller: '\Drupal\people\Controller\FormTestController'
+  requirements:
+    _permission: 'access content'
+
+people.xform:
+  path: 'xform'
+  defaults:
+    _title: 'Xform'
+    _controller: '\Drupal\people\Controller\XformController'
+  requirements:
+    _permission: 'access content'
+
+people.listado:
+  path: '/listado'
+  defaults:
+    _title: 'Listado'
+    _controller: '\Drupal\people\Controller\ListadoController'
+  requirements:
+    _permission: 'access content'
+
+people.listado_delete:
+  path: '/listado-delete/{id}'
+  defaults:
+    _title: 'Delete'
+    _controller: '\Drupal\people\Controller\ListadoController::delete'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      id:
+        type: 'int'
+
+people.form_crud:
+  path: '/form-crudold/{type}/{id?}'
+  defaults:
+    _title: 'Form'
+    _controller: '\Drupal\people\Controller\FormCrudController'
+  requirements:
+    _permission: 'access content'

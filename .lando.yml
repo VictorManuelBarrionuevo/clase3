@@ -1,4 +1,8 @@
-name: drupal-10-lando
+name: testdrupal
 recipe: drupal10
-config:
-  webroot: web
+services:
+  appserver:
+    webroot: web
+    xdebug: debug
+    config:
+      php: .vscode/lando-php-ini/php.ini

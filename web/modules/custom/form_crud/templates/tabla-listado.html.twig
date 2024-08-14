@@ -1,0 +1,38 @@
+<a class="miboton" href="/form-crud/new">Alta</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th class="miclase1" style="width: 100px;">
+                Nombre
+            </th>
+            <th>
+                delete
+            </th>
+            <th>
+                edit
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in people_rows %}
+            <tr>
+                <td>
+                    {{ row.id }}
+                </td>
+                <td>
+                    {{ row.nombre }}
+                </td>
+                <td>
+                    <a href="form-crud/delete/{{ row.id }}">Delete</a>
+                </td>
+                <td>
+                    <a href="form-crud/edit/{{ row.id }}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,11 @@
+entity.people_entity.settings:
+  title: 'People data'
+  description: 'Configure a People data entity type.'
+  route_name:  entity.people_entity.settings
+  parent: system.admin_structure
+
+entity.people_entity.collection:
+  title: 'People datas'
+  description: 'List of people datas.'
+  route_name: entity.people_entity.collection
+  parent: system.admin_content

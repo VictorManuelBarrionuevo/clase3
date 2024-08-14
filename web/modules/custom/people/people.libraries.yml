@@ -1,0 +1,10 @@
+people_js_css:
+  version: 1.x
+  css:
+    theme:
+      css/people.css: {}
+  js:
+    js/people.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

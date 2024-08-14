@@ -1,0 +1,10 @@
+form_crud_js_css:
+  version: 1.x
+  css:
+    theme:
+      css/form_crud.css: {}
+  js:
+    js/form_crud.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

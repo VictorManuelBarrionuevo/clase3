@@ -60,5 +60,3 @@
 /drush
 /drupal.phar
 /drupal
-
-!/web/sites/default/files

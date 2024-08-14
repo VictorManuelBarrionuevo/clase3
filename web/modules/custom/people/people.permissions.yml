@@ -1,0 +1,11 @@
+administer people_entity:
+  title: 'Administer people datas'
+  restrict access: true
+view people_entity:
+  title: 'View people data'
+edit people_entity:
+  title: 'Edit people data'
+delete people_entity:
+  title: 'Delete people data'
+create people_entity:
+  title: 'Create people data'
