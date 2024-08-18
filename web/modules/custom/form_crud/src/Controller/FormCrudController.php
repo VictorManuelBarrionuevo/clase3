@@ -46,14 +46,8 @@ final class FormCrudController extends ControllerBase
         $build = $this->ir_template_edicion($type, $id);
         break;
       case 'new':
-        //$build = $this->ir_template_new($type, $id);
-        //Cuando queremos abrir el formulario para completar un nuevo registro
-        $build['form_crud_form_crud'] = array(
-          '#theme' => 'xform_crud',
-          '#type' => $type
-        );
+        $build = $this->ir_template_new($type);
         break;
-
       case 'delete':
         //borrar de la tabla xform el id N x
         //armando la query
@@ -160,7 +154,8 @@ final class FormCrudController extends ControllerBase
     return new RedirectResponse($url);
   }
 
-  public function ir_template_edicion($type, $id = null){
+  public function ir_template_edicion($type, $id = null)
+  {
     //cuando hay que hacer una UPDATE
     $form_data = [];
     if (isset($id)) {
@@ -182,4 +177,13 @@ final class FormCrudController extends ControllerBase
     return $build;
   }
 
+  public function ir_template_new($type)
+  {
+    //Cuando queremos abrir el formulario para completar un nuevo registro
+    $build['form_crud_form_crud'] = array(
+      '#theme' => 'xform_crud',
+      '#type' => $type
+    );
+    return $build;
+  }
 }
