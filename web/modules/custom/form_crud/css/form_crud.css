@@ -41,3 +41,64 @@
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
     /* Añadir un resplandor alrededor para accesibilidad */
 }
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+}
+
+.custom-table-header {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.custom-table-heading {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.custom-table-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.custom-table-row:hover {
+    background-color: #ddd;
+}
+
+.custom-table-cell {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table-action {
+    text-align: center;
+}
+
+.custom-delete-link,
+.custom-edit-link {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.custom-delete-link {
+    background-color: #f44336;
+    /* Red */
+}
+
+.custom-edit-link {
+    background-color: #008CBA;
+    /* Blue */
+}
+
+.custom-delete-link:hover {
+    background-color: #d32f2f;
+}
+
+.custom-edit-link:hover {
+    background-color: #007bb5;
+}

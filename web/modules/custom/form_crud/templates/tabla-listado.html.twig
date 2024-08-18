@@ -1,38 +1,75 @@
 <a class="miboton" href="/form-crud/new">Alta</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>
+<table class="custom-table">
+    <thead class="custom-table-header fuente">
+        <tr class="custom-table-row">
+            <th class="custom-table-heading">
                 ID
             </th>
-            <th class="miclase1" style="width: 100px;">
+            <th class="custom-table-heading">
                 Nombre
             </th>
-            <th>
-                delete
+            <th class="custom-table-heading">
+                Description
             </th>
-            <th>
-                edit
+            <th class="custom-table-heading">
+                Email
+            </th>
+            <th class="custom-table-heading">
+                Vehicle 1
+            </th>
+            <th class="custom-table-heading">
+                Vehicle 2
+            </th>
+            <th class="custom-table-heading">
+                Vehicle 3
+            </th>
+            <th class="custom-table-heading">
+                Pwd
+            </th>
+            <th class="custom-table-heading">
+                Delete
+            </th>
+            <th class="custom-table-heading">
+                Edit
             </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="custom-table-body">
         {% for row in people_rows %}
-            <tr>
-                <td>
+            <tr class="custom-table-row">
+                <td class="custom-table-cell">
                     {{ row.id }}
                 </td>
-                <td>
+                <td class="custom-table-cell">
                     {{ row.nombre }}
                 </td>
-                <td>
-                    <a href="form-crud/delete/{{ row.id }}">Delete</a>
+                <td class="custom-table-cell">
+                    {{ row.description }}
                 </td>
-                <td>
-                    <a href="form-crud/edit/{{ row.id }}">Edit</a>
+                <td class="custom-table-cell">
+                    {{ row.email }}
+                </td>
+                <td class="custom-table-cell">
+                    {{ row.vehicle1 }}
+                </td>
+                <td class="custom-table-cell">
+                    {{ row.vehicle2 }}
+                </td>
+                <td class="custom-table-cell">
+                    {{ row.vehicle3 }}
+                </td>
+                <td class="custom-table-cell">
+                    {{ row.pwd }}
+                </td>
+                <td class="custom-table-cell custom-table-action">
+                    <a href="form-crud/delete/{{ row.id }}" class="custom-delete-link">Delete</a>
+                </td>
+                <td class="custom-table-cell custom-table-action">
+                    <a href="form-crud/edit/{{ row.id }}" class="custom-edit-link">Edit</a>
                 </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
+
