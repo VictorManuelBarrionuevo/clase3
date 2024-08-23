@@ -64,3 +64,4 @@
 /web/modules/contrib/
 /web/sites/default/files
 /web/themes/contrib
+/.vscode/xdebug.log
