@@ -40,8 +40,8 @@ final class FormCrudController extends ControllerBase
   {
     switch ($type) {
       case 'abm':
-        $this->crear_o_editar($request);
-        // no break
+        $url = $this->crear_o_editar($request);
+        return new RedirectResponse($url);
       case 'edit':
         $build = $this->ir_template_edicion($type, $id);
         break;
@@ -52,41 +52,7 @@ final class FormCrudController extends ControllerBase
         $url = $this->borrar($id);
         return new RedirectResponse($url);
       default:
-        //Creo el listado para mostrar en una tabla
-        //creo la sentencia a ejecutar
-        $query = "SELECT * FROM {xform}";
-        //Ejecuto la sentencia a la base de datos
-        $rows = $this->database->query($query);
-
-        //recorro los resultados para ponerlos en un array
-        $items = [];
-        foreach ($rows as $row) {
-          $record_array = (array) $row;
-
-          $url = Url::fromRoute('form_crud.crud')->toString() . '/delete' . '/' . $record_array['id'];
-          $record_array['delete'] = [
-            'data' => [
-              '#type' => 'link',
-              '#title' => $this->t('Delete'),
-              '#url' => $url,
-              '#attributes' => [
-                'class' => ['deletebutton', 'button--danger'],
-              ],
-            ],
-          ];
-          $items[] = $record_array;
-        }
-
-        $header = [];
-        if (!empty($items)) {
-          $header = array_keys((array) $items[0]);
-        }
-
-        $build['crud_tabla_listado'] = array(
-          '#theme' => 'tabla_listado',
-          '#people_header' => $header,
-          '#people_rows' => $items,
-        );
+        $build = $this->listado();
     }
 
     return $build;
@@ -137,14 +103,14 @@ final class FormCrudController extends ControllerBase
     }
     // Ejecutar la consulta.
     $this->database->query($query, $args);
-    if (isset($form_id) & $form_id != '0') {
+    if (isset($form_id) & $form_id != "") {
       \Drupal::messenger()->addWarning($this->t('The item with ID @id has been modified.', ['@id' => $form_id]));
     } else {
       $id = $this->database->lastInsertId();
       \Drupal::messenger()->addWarning($this->t('The item with ID @id has been created.', ['@id' => $id]));
     }
     $url = Url::fromRoute('form_crud.crud')->toString();
-    return new RedirectResponse($url);
+    return $url;
   }
 
   public function ir_template_edicion($type, $id = null)
@@ -190,5 +156,45 @@ final class FormCrudController extends ControllerBase
     \Drupal::messenger()->addWarning($this->t('The item with ID @id has been deleted.', ['@id' => $id]));
     $url = Url::fromRoute('form_crud.crud')->toString(); //form-crud
     return $url;
+  }
+
+  public function listado(){
+    //Creo el listado para mostrar en una tabla
+    //creo la sentencia a ejecutar
+    $query = "SELECT * FROM {xform}";
+    //Ejecuto la sentencia a la base de datos
+    $rows = $this->database->query($query);
+
+    //recorro los resultados para ponerlos en un array
+    $items = [];
+    foreach ($rows as $row) {
+      $record_array = (array) $row;
+
+      $url = Url::fromRoute('form_crud.crud')->toString() . '/delete' . '/' . $record_array['id'];
+      $record_array['delete'] = [
+        'data' => [
+          '#type' => 'link',
+          '#title' => $this->t('Delete'),
+          '#url' => $url,
+          '#attributes' => [
+            'class' => ['deletebutton', 'button--danger'],
+          ],
+        ],
+      ];
+      $items[] = $record_array;
+    }
+
+    $header = [];
+    if (!empty($items)) {
+      $header = array_keys((array) $items[0]);
+    }
+
+    $build['crud_tabla_listado'] = array(
+      '#theme' => 'tabla_listado',
+      '#people_header' => $header,
+      '#people_rows' => $items,
+    );
+
+    return $build;
   }
 }
