@@ -41,6 +41,7 @@ final class FormCrudController extends ControllerBase
     switch ($type) {
       case 'abm':
         $this->crear_o_editar($request);
+        // no break
       case 'edit':
         $build = $this->ir_template_edicion($type, $id);
         break;
@@ -48,15 +49,8 @@ final class FormCrudController extends ControllerBase
         $build = $this->ir_template_new($type);
         break;
       case 'delete':
-        //borrar de la tabla xform el id N x
-        //armando la query
-        $query = 'DELETE FROM xform WHERE id = ' . $id;
-        //Ejecutar la query
-        $this->database->query($query);
-        \Drupal::messenger()->addWarning($this->t('The item with ID @id has been deleted.', ['@id' => $id]));
-        $url = Url::fromRoute('form_crud.crud')->toString();
+        $url = $this->borrar($id);
         return new RedirectResponse($url);
-
       default:
         //Creo el listado para mostrar en una tabla
         //creo la sentencia a ejecutar
@@ -184,5 +178,17 @@ final class FormCrudController extends ControllerBase
       '#type' => $type
     );
     return $build;
+  }
+
+  public function borrar($id)
+  {
+    //borrar de la tabla xform el id N x
+    //armando la query
+    $query = 'DELETE FROM xform WHERE id = ' . $id;
+    //Ejecutar la query
+    $this->database->query($query);
+    \Drupal::messenger()->addWarning($this->t('The item with ID @id has been deleted.', ['@id' => $id]));
+    $url = Url::fromRoute('form_crud.crud')->toString(); //form-crud
+    return $url;
   }
 }
