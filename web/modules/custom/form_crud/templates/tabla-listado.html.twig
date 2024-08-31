@@ -25,6 +25,9 @@
                 Pwd
             </th>
             <th class="custom-table-heading">
+                Ver
+            </th>
+            <th class="custom-table-heading">
                 Delete
             </th>
             <th class="custom-table-heading">
@@ -55,6 +58,9 @@
                 </td>
                 <td class="custom-table-cell">
                     {{ row.pwd }}
+                </td>
+                <td class="custom-table-cell custom-table-action">
+                    <a href="form-crud/ver/{{ row.id }}" class="custom-ver-link">ver</a>
                 </td>
                 <td class="custom-table-cell custom-table-action">
                     <a href="form-crud/delete/{{ row.id }}" class="custom-delete-link">Delete</a>

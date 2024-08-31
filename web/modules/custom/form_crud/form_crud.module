@@ -25,11 +25,11 @@ function form_crud_theme(): array
         'variables' => ['form_data' => '', 'type' => '', 'id' => ''],
     ];
 
-    return $themes;
+    $themes['ver_detalle'] = [
+        'variables' => ['form_data' => ''],
+    ];
 
-    /*return [
-      'people_entity' => ['render element' => 'elements'],
-    ];*/
+    return $themes;
 }
 
 /**

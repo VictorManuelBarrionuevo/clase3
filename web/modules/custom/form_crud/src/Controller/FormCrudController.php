@@ -48,6 +48,9 @@ final class FormCrudController extends ControllerBase
       case 'new':
         $build = $this->ir_template_new($type);
         break;
+      case 'ver':
+        $build = $this->ir_template_ver_detalle($id);
+        break;
       case 'delete':
         $url = $this->borrar($id);
         return new RedirectResponse($url);
@@ -182,6 +185,25 @@ final class FormCrudController extends ControllerBase
       '#people_rows' => $items,
     );
 
+    return $build;
+  }
+  public function ir_template_ver_detalle($id){
+    //cuando hay que ir al detalle
+    $form_data = [];
+    if (isset($id)) {
+      // Obtener datos de la base de datos según el ID
+      $database = \Drupal::database();
+      $query = $database->select('xform', 'x')
+        ->fields('x')
+        ->condition('id', $id)
+        ->execute()
+        ->fetchAssoc();
+      $form_data = $query ? $query : [];
+    }
+    $build['form_crud_form_crud'] = array(
+      '#theme' => 'ver_detalle',
+      '#datos' => $form_data,
+    );
     return $build;
   }
 }

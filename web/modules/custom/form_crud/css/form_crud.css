@@ -102,3 +102,68 @@
 .custom-edit-link:hover {
     background-color: #007bb5;
 }
+
+.detail-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.detail-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.detail-value {
+    color: #333;
+}
+
+.detail-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.custom-edit-link,
+.custom-delete-link,
+.custom-back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.custom-edit-link {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.custom-delete-link {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.custom-back-link {
+    background-color: #6c757d;
+    color: #fff;
+}

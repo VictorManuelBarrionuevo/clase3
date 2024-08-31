@@ -1,0 +1,41 @@
+<div class="detail-container">
+    <h2 class="detail-header">Detalle de
+        {{ form_data.nombre }}</h2>
+    <div class="detail-item">
+        <span class="detail-label">ID:</span>
+        <span class="detail-value">{{ form_data.id }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Nombre:</span>
+        <span class="detail-value">{{ form_data.nombre }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Email:</span>
+        <span class="detail-value">{{ form_data.email }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Descripcion:</span>
+        <span class="detail-value">{{ form_data.description }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Vehículo 1:</span>
+        <span class="detail-value">{{ form_data.vehicle1 }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Vehículo 2:</span>
+        <span class="detail-value">{{ form_data.vehicle2 }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Vehículo 3:</span>
+        <span class="detail-value">{{ form_data.vehicle3 }}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Contraseña:</span>
+        <span class="detail-value">{{ form_data.pwd }}</span>
+    </div>
+    <div class="detail-actions">
+        <a href="/form-crud/edit/{{ form_data.id }}" class="custom-edit-link">Edit</a>
+        <a href="/form-crud/delete/{{ form_data.id }}" class="custom-delete-link">Delete</a>
+        <button onclick="history.back()" class="custom-back-link">Volver al listado</button>
+    </div>
+</div>
