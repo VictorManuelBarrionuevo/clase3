@@ -168,20 +168,7 @@ final class FormCrudController extends ControllerBase
     //recorro los resultados para ponerlos en un array
     $items = [];
     foreach ($rows as $row) {
-      $record_array = (array) $row;
-
-      $url = Url::fromRoute('form_crud.crud')->toString() . '/delete' . '/' . $record_array['id'];
-      $record_array['delete'] = [
-        'data' => [
-          '#type' => 'link',
-          '#title' => $this->t('Delete'),
-          '#url' => $url,
-          '#attributes' => [
-            'class' => ['deletebutton', 'button--danger'],
-          ],
-        ],
-      ];
-      $items[] = $record_array;
+      $items[] = (array) $row;
     }
 
     $header = [];
