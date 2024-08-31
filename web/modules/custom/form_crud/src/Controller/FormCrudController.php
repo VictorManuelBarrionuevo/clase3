@@ -40,7 +40,7 @@ final class FormCrudController extends ControllerBase
   {
     switch ($type) {
       case 'abm':
-        $url = $this->crear_o_editar($request);
+        $url = $this->crear_editar_o_borrar($request, $id);
         return new RedirectResponse($url);
       case 'edit':
         $build = $this->ir_template_edicion($type, $id);
@@ -51,9 +51,6 @@ final class FormCrudController extends ControllerBase
       case 'ver':
         $build = $this->ir_template_ver_detalle($id);
         break;
-      case 'delete':
-        $url = $this->borrar($id);
-        return new RedirectResponse($url);
       default:
         $build = $this->listado();
     }
@@ -62,7 +59,7 @@ final class FormCrudController extends ControllerBase
   }
 
 
-  public function crear_o_editar($request)
+  public function crear_editar_o_borrar($request, $id)
   {
     //Cuando tengo que hacer un insert o update
     $form_id = $request->request->get('form_id');
@@ -103,6 +100,15 @@ final class FormCrudController extends ControllerBase
         ':vehicle3' => $vehicle3,
         ':pwd' => $pwd,
       ];
+    } else {
+      //borrar de la tabla xform el id N x
+      //armando la query
+      $query = 'DELETE FROM xform WHERE id = ' . $id;
+      //Ejecutar la query
+      $this->database->query($query);
+      \Drupal::messenger()->addWarning($this->t('The item with ID @id has been deleted.', ['@id' => $id]));
+      $url = Url::fromRoute('form_crud.crud')->toString(); //form-crud
+      return $url;
     }
     // Ejecutar la consulta.
     $this->database->query($query, $args);
@@ -147,18 +153,6 @@ final class FormCrudController extends ControllerBase
       '#type' => $type
     );
     return $build;
-  }
-
-  public function borrar($id)
-  {
-    //borrar de la tabla xform el id N x
-    //armando la query
-    $query = 'DELETE FROM xform WHERE id = ' . $id;
-    //Ejecutar la query
-    $this->database->query($query);
-    \Drupal::messenger()->addWarning($this->t('The item with ID @id has been deleted.', ['@id' => $id]));
-    $url = Url::fromRoute('form_crud.crud')->toString(); //form-crud
-    return $url;
   }
 
   public function listado(){

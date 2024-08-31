@@ -77,12 +77,17 @@
     text-align: center;
 }
 
+.custom-ver-link,
 .custom-delete-link,
 .custom-edit-link {
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 4px;
     color: white;
+}
+
+.custom-ver-link{
+    background-color: #28c84b;
 }
 
 .custom-delete-link {
