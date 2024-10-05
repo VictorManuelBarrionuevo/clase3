@@ -116,6 +116,28 @@ final class People extends ContentEntityBase implements PeopleInterface
       ->setDisplayConfigurable('form', true)
       ->setDisplayConfigurable('view', true);
 
+    $fields['email'] = BaseFieldDefinition::create('email')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The email address of the user.'))
+      ->setRevisionable(true)
+      ->setRequired(true)
+      ->setSettings([
+        'max_length' => 254,
+        'text_processing' => 0,
+      ])
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'email_mailto',
+        'weight' => 0,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'email_default',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('view', true)
+      ->setDisplayConfigurable('form', true);
+
+
     $fields['acceptance_of_terms_and_conditions'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Acceptance of terms and conditions'))
       ->setDefaultValue(false)
