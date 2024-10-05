@@ -137,8 +137,120 @@ final class People extends ContentEntityBase implements PeopleInterface
       ->setDisplayConfigurable('view', true)
       ->setDisplayConfigurable('form', true);
 
+      $fields['date_of_birth'] = BaseFieldDefinition::create('datetime')
+    ->setLabel(t('Date and Time'))
+    ->setDescription(t('The date and time of the event.'))
+    ->setSettings([
+        'datetime_type' => 'datetime',
+        'max_length' => 255, // Ajusta el valor según sea necesario
+        'text_processing' => 0,
+    ])
+    ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'datetime_default',
+        'weight' => 0,
+    ])
+    ->setDisplayOptions('form', [
+        'type' => 'datetime_default',
+        'weight' => 0,
+    ])
+    ->setDisplayConfigurable('view', true)
+    ->setDisplayConfigurable('form', true);
 
-    $fields['acceptance_of_terms_and_conditions'] = BaseFieldDefinition::create('boolean')
+    $fields['gender'] = BaseFieldDefinition::create('list_string')
+    ->setLabel(t('Gender'))
+    ->setDescription(t('The gender of the user.'))
+    ->setSettings([
+        'allowed_values' => [
+            'male' => t('Male'),
+            'female' => t('Female'),
+            'other' => t('Other'),
+            'prefer_not_to_say' => t('Prefer not to say'),
+        ],
+    ])
+    ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => 0,
+    ])
+    ->setDisplayOptions('form', [
+        'type' => 'options_select', // O 'options_buttons' si deseas mostrar botones de opción.
+        'weight' => 0,
+    ])
+    ->setDisplayConfigurable('view', true)
+    ->setDisplayConfigurable('form', true);
+
+    $fields['address'] = BaseFieldDefinition::create('string_long')
+    ->setLabel(t('Address'))
+    ->setDescription(t('The address of the user.'))
+    ->setSettings([
+        'max_length' => 512, // Ajusta el valor según sea necesario.
+        'text_processing' => 0,
+    ])
+    ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => 0,
+    ])
+    ->setDisplayOptions('form', [
+        'type' => 'string_textarea', // Utiliza un área de texto para permitir la entrada de direcciones largas.
+        'weight' => 0,
+    ])
+    ->setDisplayConfigurable('view', true)
+    ->setDisplayConfigurable('form', true);
+
+    $fields['phone_number'] = BaseFieldDefinition::create('list_string')
+    ->setLabel(t('Phone Number'))
+    ->setDescription(t('The phone number of the user.'))   
+    ->setSettings([
+        'allowed_values' => [
+            'mobile' => t('Mobile'),
+            'landline' => t('Landline'),
+            'fax' => t('Fax'),
+            'other' => t('Other'),
+        ],
+    ])
+    ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => 0,
+    ])
+    ->setDisplayOptions('form', [
+        'type' => 'options_select', // Para seleccionar el tipo de teléfono.
+        'weight' => 0,
+    ])
+    ->setDisplayConfigurable('view', true)
+    ->setDisplayConfigurable('form', true);
+
+    /* $fields['country_of_residence'] = BaseFieldDefinition::create('entity_reference') 
+    ->setLabel(t('Country of Residence'))
+    ->setDescription(t('The country where the user resides.'))
+    ->setSettings([
+        'allowed_values' => [
+            'usa' => t('United States'),
+            'canada' => t('Canada'),
+            'uk' => t('United Kingdom'),
+            'germany' => t('Germany'),
+            'france' => t('France'),
+            'spain' => t('Spain'),
+            'mexico' => t('Mexico'),
+            'other' => t('Other'), // Opción para otros países.
+        ],
+    ])
+    ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => 0,
+    ])
+    ->setDisplayOptions('form', [
+        'type' => 'options_select', // Utiliza un campo de selección para elegir el país.
+        'weight' => 0,
+    ])
+    ->setDisplayConfigurable('view', true)
+    ->setDisplayConfigurable('form', true); */
+
+
+        $fields['acceptance_of_terms_and_conditions'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Acceptance of terms and conditions'))
       ->setDefaultValue(false)
       ->setSetting('on_label', 'Enabled')
