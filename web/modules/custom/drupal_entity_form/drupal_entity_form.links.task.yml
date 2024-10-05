@@ -1,0 +1,22 @@
+entity.drupal_entity_form_people.settings:
+  title: 'Settings'
+  route_name: entity.drupal_entity_form_people.settings
+  base_route: entity.drupal_entity_form_people.settings
+entity.drupal_entity_form_people.view:
+  title: 'View'
+  route_name: entity.drupal_entity_form_people.canonical
+  base_route: entity.drupal_entity_form_people.canonical
+entity.drupal_entity_form_people.edit_form:
+  title: 'Edit'
+  route_name: entity.drupal_entity_form_people.edit_form
+  base_route: entity.drupal_entity_form_people.canonical
+entity.drupal_entity_form_people.delete_form:
+  title: 'Delete'
+  route_name: entity.drupal_entity_form_people.delete_form
+  base_route: entity.drupal_entity_form_people.canonical
+  weight: 10
+entity.drupal_entity_form_people.collection:
+  title: 'Peoples'
+  route_name: entity.drupal_entity_form_people.collection
+  base_route: system.admin_content
+  weight: 10

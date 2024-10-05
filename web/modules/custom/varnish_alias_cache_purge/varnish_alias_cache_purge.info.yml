@@ -1,0 +1,9 @@
+name: 'varnish_alias_cache_purge'
+type: module
+description: 'varnish alias cache purge module'
+package: Custom
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - purge:purge
+  - varnish_purger:varnish_purger
+  - path_alias:path_alias

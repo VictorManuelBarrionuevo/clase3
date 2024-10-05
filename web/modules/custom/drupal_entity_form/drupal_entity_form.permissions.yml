@@ -1,0 +1,3 @@
+administer drupal_entity_form_people:
+  title: 'Administer peoples'
+  restrict access: true

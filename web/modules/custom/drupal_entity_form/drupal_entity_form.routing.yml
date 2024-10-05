@@ -1,0 +1,7 @@
+entity.drupal_entity_form_people.settings:
+  path: 'admin/structure/drupal-entity-form-people'
+  defaults:
+    _form: '\Drupal\drupal_entity_form\Form\PeopleSettingsForm'
+    _title: 'People'
+  requirements:
+    _permission: 'administer drupal_entity_form_people'

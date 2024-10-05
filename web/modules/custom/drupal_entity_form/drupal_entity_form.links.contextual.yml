@@ -1,0 +1,10 @@
+entity.drupal_entity_form_people.edit_form:
+  route_name: entity.drupal_entity_form_people.edit_form
+  group: drupal_entity_form_people
+  title: 'Edit'
+
+entity.drupal_entity_form_people.delete_form:
+  route_name: entity.drupal_entity_form_people.delete_form
+  group: drupal_entity_form_people
+  title: 'Delete'
+  weight: 10

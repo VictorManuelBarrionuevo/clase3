@@ -1,0 +1,4 @@
+services:
+  varnish_alias_cache_purge.cache_purger:
+    class: Drupal\varnish_alias_cache_purge\Service\CachePurgerService
+    arguments: ['@plugin.manager.purge.purgers', '@logger.factory']

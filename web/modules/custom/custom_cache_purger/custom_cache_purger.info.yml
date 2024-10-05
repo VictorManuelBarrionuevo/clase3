@@ -1,0 +1,8 @@
+name: 'Custom Cache Purger'
+type: module
+description: 'Manages and automates cache invalidation in Drupal.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - cloudfront_purger:cloudfront_purger
+  - varnish_purge:varnish_purger

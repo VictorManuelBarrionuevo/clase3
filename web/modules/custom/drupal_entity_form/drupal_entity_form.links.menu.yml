@@ -1,0 +1,11 @@
+entity.drupal_entity_form_people.settings:
+  title: 'People'
+  description: 'Configure a People entity type.'
+  route_name:  entity.drupal_entity_form_people.settings
+  parent: system.admin_structure
+
+entity.drupal_entity_form_people.collection:
+  title: 'Peoples'
+  description: 'List of peoples.'
+  route_name: entity.drupal_entity_form_people.collection
+  parent: system.admin_content

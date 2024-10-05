@@ -38,4 +38,5 @@ function form_crud_theme(): array
 function form_crud_page_attachments(array &$attachments)
 {
     $attachments['#attached']['library'][] = 'form_crud/form_crud_js_css';
+    $attachments['#attached']['library'][] = 'bootstrap/slick_carousel_library';
 }

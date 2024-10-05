@@ -1,0 +1,5 @@
+drupal_entity_form_people.add_form:
+  title: 'Add people'
+  route_name: entity.drupal_entity_form_people.add_form
+  appears_on:
+    - entity.drupal_entity_form_people.collection

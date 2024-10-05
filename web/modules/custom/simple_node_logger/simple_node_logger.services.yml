@@ -1,0 +1,5 @@
+services:
+  simple_node_logger.node_save_subscriber:
+    class: Drupal\simple_node_logger\EventSubscriber\NodeSaveSubscriber
+    tags:
+      - { name: 'event_subscriber' }

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - drupal_entity_form
+id: drupal_entity_form_people_save_action
+label: 'Save peoples'
+type: drupal_entity_form_people
+plugin: entity:save_action:drupal_entity_form_people
+configuration: {  }

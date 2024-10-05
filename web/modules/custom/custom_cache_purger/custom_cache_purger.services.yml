@@ -1,0 +1,14 @@
+services:
+  # Defines the CachePurgerService service, which handles cache purging.
+  custom_cache_purger.cache_purger:
+    class: Drupal\custom_cache_purger\Service\CachePurgerService
+    # No 'arguments' are required here because the constructor does not require other services.
+
+  # Defines the NodeSaveSubscriber service, which listens for node save events.
+  custom_cache_purger.node_save_subscriber:
+    class: Drupal\custom_cache_purger\EventSubscriber\NodeSaveSubscriber
+    # The CachePurgerService is passed as a dependency to the NodeSaveSubscriber.
+    arguments: ['@custom_cache_purger.cache_purger']
+    # Tag the service as an event subscriber so it listens to the defined events in the application.
+    tags:
+      - { name: 'event_subscriber' }

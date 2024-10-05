@@ -1,0 +1,5 @@
+name: 'simple_node_logger'
+type: module
+description: 'simple_node_logger description'
+package: Custom
+core_version_requirement: ^10 || ^11
