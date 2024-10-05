@@ -57,15 +57,16 @@ use Drupal\user\EntityOwnerTrait;
  *   field_ui_base_route = "entity.drupal_entity_form_people.settings",
  * )
  */
-final class People extends ContentEntityBase implements PeopleInterface {
-
+final class People extends ContentEntityBase implements PeopleInterface
+{
   use EntityChangedTrait;
   use EntityOwnerTrait;
 
   /**
    * {@inheritdoc}
    */
-  public function preSave(EntityStorageInterface $storage): void {
+  public function preSave(EntityStorageInterface $storage): void
+  {
     parent::preSave($storage);
     if (!$this->getOwnerId()) {
       // If no owner has been set explicitly, make the anonymous user the owner.
@@ -76,38 +77,57 @@ final class People extends ContentEntityBase implements PeopleInterface {
   /**
    * {@inheritdoc}
    */
-  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array {
+  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array
+  {
 
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['label'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Label'))
-      ->setRequired(TRUE)
+      ->setLabel(t('Full Name'))
+      ->setRequired(true)
       ->setSetting('max_length', 255)
       ->setDisplayOptions('form', [
         'type' => 'string_textfield',
-        'weight' => -5,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('form', true)
       ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'string',
-        'weight' => -5,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', true);
 
-    $fields['status'] = BaseFieldDefinition::create('boolean')
-      ->setLabel(t('Status'))
-      ->setDefaultValue(TRUE)
+    $fields['documents'] = BaseFieldDefinition::create('file')
+      ->setLabel(t('Attached Documents'))
+      ->setSettings([
+        'uri_scheme' => 'public',
+        'file_directory' => '',
+        'file_extensions' => 'png jpg jpeg pdf',
+      ])
+      ->setRevisionable(true)
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'weight' => 0,
+      ))
+      ->setDisplayOptions('form', array(
+        'weight' => 0,
+      ))
+      ->setDisplayConfigurable('form', true)
+      ->setDisplayConfigurable('view', true);
+
+    $fields['acceptance_of_terms_and_conditions'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Acceptance of terms and conditions'))
+      ->setDefaultValue(false)
       ->setSetting('on_label', 'Enabled')
       ->setDisplayOptions('form', [
         'type' => 'boolean_checkbox',
         'settings' => [
-          'display_label' => FALSE,
+          'display_label' => true,
         ],
         'weight' => 0,
       ])
-      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('form', true)
       ->setDisplayOptions('view', [
         'type' => 'boolean',
         'label' => 'above',
@@ -116,21 +136,43 @@ final class People extends ContentEntityBase implements PeopleInterface {
           'format' => 'enabled-disabled',
         ],
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', true);
+
+    $fields['status'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Status'))
+      ->setDefaultValue(true)
+      ->setSetting('on_label', 'Enabled')
+      ->setDisplayOptions('form', [
+        'type' => 'boolean_checkbox',
+        'settings' => [
+          'display_label' => false,
+        ],
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', true)
+      ->setDisplayOptions('view', [
+        'type' => 'boolean',
+        'label' => 'above',
+        'weight' => 0,
+        'settings' => [
+          'format' => 'enabled-disabled',
+        ],
+      ])
+      ->setDisplayConfigurable('view', true);
 
     $fields['description'] = BaseFieldDefinition::create('text_long')
       ->setLabel(t('Description'))
       ->setDisplayOptions('form', [
         'type' => 'text_textarea',
-        'weight' => 10,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('form', true)
       ->setDisplayOptions('view', [
         'type' => 'text_default',
         'label' => 'above',
-        'weight' => 10,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', true);
 
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Author'))
@@ -143,15 +185,15 @@ final class People extends ContentEntityBase implements PeopleInterface {
           'size' => 60,
           'placeholder' => '',
         ],
-        'weight' => 15,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('form', true)
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'author',
-        'weight' => 15,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', true);
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Authored on'))
@@ -159,14 +201,14 @@ final class People extends ContentEntityBase implements PeopleInterface {
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'timestamp',
-        'weight' => 20,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('form', true)
       ->setDisplayOptions('form', [
         'type' => 'datetime_timestamp',
-        'weight' => 20,
+        'weight' => 0,
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', true);
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
@@ -174,5 +216,4 @@ final class People extends ContentEntityBase implements PeopleInterface {
 
     return $fields;
   }
-
 }
